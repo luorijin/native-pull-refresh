@@ -107,7 +107,8 @@
                 percentage = (dragStart - target.clientY) / window.screen.height;
 
                 // 当scrolltop是0且往下滚动
-                if (document.body.scrollTop === 0) {
+                var oTop = document.body.scrollTop === 0 ? document.documentElement.scrollTop : document.body.scrollTop;
+                if (oTop === 0) {
                     if (percentage < 0) {
                         
                         event.preventDefault();
