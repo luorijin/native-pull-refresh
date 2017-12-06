@@ -2,15 +2,11 @@
 * author: "oujizeng",
 * license: "MIT",
 * name: "naturePullRefresh.js",
-* version: "1.2.2"
+* version: "1.2.3"
 */
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], function () {
-            return (root.returnExportsGlobal = factory());
-        });
-    } else if (typeof exports === 'object') {
+    if (typeof module != 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         root['NaturePullRefresh'] = factory();
@@ -71,7 +67,7 @@
                     return;
                 }
 
-                dragStart = event.touches ? event.touches[0].pageY : event.touches[0].clientY;
+                dragStart = event.touches[0].pageY;
                 scroll.style.webkitTransitionDuration = '0ms';
                 scroll.style.transitionDuration = '0ms';
 
@@ -91,7 +87,7 @@
                     return;
                 }
 
-                var startY = event.touches ? event.touches[0].pageY : event.touches[0].clientY;
+                var startY = event.touches[0].pageY;
                 percentage = (dragStart - startY) / window.screen.height;
 
                 // 当scrolltop是0且往下滚动
